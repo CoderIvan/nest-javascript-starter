@@ -1,25 +1,23 @@
 /* eslint-disable no-undef */
 /* eslint-env mocha */
-import request from 'supertest'
 import { Test } from '@nestjs/testing'
 import AppController from '../src/app.controller'
 import AppService from '../src/app.service'
 
-describe('AppController (e2e)', () => {
+describe('AppController', () => {
 	let app
 
 	beforeAll(async () => {
-		const moduleFixture = await Test.createTestingModule({
+		app = await Test.createTestingModule({
 			controllers: [AppController],
 			providers: [AppService],
 		}).compile()
-
-		app = moduleFixture.createNestApplication()
-		await app.init()
 	})
 
-	it('/GET /', () => request(app.getHttpServer())
-		.get('/')
-		.expect(200)
-		.expect('Hello World!'))
+	describe('getHello', () => {
+		it('should return "Hello World!"', () => {
+			const appController = app.get(AppController)
+			expect(appController.getHello()).toBe('Hello World!')
+		})
+	})
 })
