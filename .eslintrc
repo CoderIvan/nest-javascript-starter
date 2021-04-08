@@ -1,6 +1,9 @@
 {
 	"parser": "@babel/eslint-parser",
 	"extends": ["airbnb-base"],
+	"env": {
+		"jest": true
+	},
 	"rules": {
 		"object-curly-newline": [2, { "consistent": true }],
 		"semi": [2, "never"],

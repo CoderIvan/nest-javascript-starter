@@ -1,6 +1,6 @@
 import { Controller, UseInterceptors, Post, Bind, Body } from '@nestjs/common'
 
-import AjvInterceptor from '../interceptor/AjvInterceptor'
+import AjvInterceptor from '../common/interceptor/AjvInterceptor'
 
 @Controller('device_type')
 export class DeviceTypeController {
@@ -20,7 +20,6 @@ export class DeviceTypeController {
 	@Bind(Body())
 	// eslint-disable-next-line class-methods-use-this
 	create(device_type) {
-		console.log('create device type')
 		return device_type
 	}
 }
