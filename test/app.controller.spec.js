@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-env mocha */
 import { Test } from '@nestjs/testing'
 import AppController from '../src/app.controller'
 import AppService from '../src/app.service'

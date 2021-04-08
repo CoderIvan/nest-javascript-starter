@@ -8,6 +8,7 @@
 		"indent": [2, "tab"],
 		"no-tabs": [2, { "allowIndentationTabs": true }],
 		"max-len": 0,
-		"camelcase": 0
+		"camelcase": 0,
+		"import/prefer-default-export": 0
 	}
 }

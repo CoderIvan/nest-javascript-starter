@@ -14,23 +14,17 @@ export default class AjvInterceptor {
 		})
 	}
 
-	validate(data) {
-		const valid = this.v(data)
-		if (!valid) {
-			localize.zh(this.v.errors)
-			return this.v.errors
-		}
-		return undefined
-	}
-
 	intercept(context, next) {
 		const request = context.switchToHttp().getRequest()
 		const response = context.switchToHttp().getResponse()
 
-		const errors = this.validate(request)
-
-		if (errors) {
-			response.status(403).send({ message: '无效请求参数', errors })
+		const valid = this.v({
+			body: request.body,
+			query: request.query,
+		})
+		if (!valid) {
+			localize.zh(this.v.errors)
+			response.status(403).send({ message: '无效请求参数', errors: this.v.errors })
 			return undefined
 		}
 

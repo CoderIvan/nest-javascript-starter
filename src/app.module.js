@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common'
-import AppController from './app.controller'
-import AppService from './app.service'
+import { DeviceTypeModule } from './device_type/device_type.module'
 
 @Module({
-	imports: [],
-	controllers: [AppController],
-	providers: [AppService],
+	imports: [DeviceTypeModule],
+	controllers: [],
+	providers: [],
 })
 
 export default class AppModule {}
